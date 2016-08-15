@@ -1,4 +1,6 @@
-# roastlog — A coffee roasting log geared towards home roasting
+# roastlog
+
+## A coffee roasting log geared towards home roasting
 
 Before creating this roast log, I've been working with a different template,
 but I was never really happy with it. I ran out of copies and decided it's
