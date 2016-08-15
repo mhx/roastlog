@@ -1,0 +1,135 @@
+% Copyright (c) 2016 Marcus Holland-Moritz
+%
+% Permission is hereby granted, free of charge, to any person obtaining
+% a copy of this software and associated documentation files (the
+% "Software"), to deal in the Software without restriction, including
+% without limitation the rights to use, copy, modify, merge, publish,
+% distribute, sublicense, and/or sell copies of the Software, and to
+% permit persons to whom the Software is furnished to do so, subject to
+% the following conditions:
+%
+% The above copyright notice and this permission notice shall be
+% included in all copies or substantial portions of the Software.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+% EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+% MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+% IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+% CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+% TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+% Museo fonts available from http://www.exljbris.com
+
+\documentclass[a4paper,landscape,11pt,oneside]{article}
+
+\setlength{\parindent}{0pt}
+\setlength{\textwidth}{275mm}
+\setlength{\textheight}{190mm}
+\setlength{\oddsidemargin}{-1.44cm}
+\setlength{\topmargin}{-2.81cm}
+\setlength{\unitlength}{1mm}
+
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+
+\defaultfontfeatures{Ligatures={Common}, Numbers={OldStyle}}
+
+\newenvironment{roastlog}{
+  \newpage\begin{center}\begin{picture}(275,190)
+    \setromanfont{Museo Slab 300 Italic}
+    \large
+    \put(0,176.5){Name}
+    \put(100,176.5){Origin}
+
+    \put(218.3,180.1){%
+      \begin{minipage}[b]{30mm}
+        \raggedleft
+        \scalebox{0.025}{\includegraphics{bean2.png}}
+      \end{minipage}
+    }
+    \put(220,176.5){%
+      \begin{minipage}[b]{30mm}
+        \raggedleft
+        \setromanfont{Museo 700}
+        \large NERDBEANZ
+      \end{minipage}
+    }
+
+    \put(245,176.5){%
+      \begin{minipage}[b]{30mm}
+        \raggedleft
+        \setromanfont{Museo Slab 500 Italic}
+        \footnotesize Roast Log v1.0 \\[1mm]
+        \scalebox{0.52}{\includegraphics{by-nc-nd.eps}}
+        \setromanfont{Museo 700}
+        \tiny http://nerdbea.nz
+      \end{minipage}
+    }
+}{\end{picture}\end{center}}
+
+\newcommand{\proplabel}[2]{
+  \put(1,1){%
+    \begin{minipage}[t]{33mm}
+      \setromanfont{Museo Slab 500 Italic}
+      \footnotesize #1
+    \end{minipage}
+  }
+  \put(1,5){%
+    \begin{minipage}[t]{31mm}
+      \raggedleft
+      \setromanfont{Museo Slab 300 Italic}
+      \Large #2
+    \end{minipage}
+  }
+}
+
+\newcommand{\roastprops}[7]{%
+  \linethickness{0.5pt}
+  \put(0,0){\line(0,1){42}}
+  \put(0,28){\proplabel{#2}{#3}}
+  \put(0,28){\line(1,0){#1}}
+  \put(0,14){\proplabel{#4}{#5}}
+  \put(0,14){\line(1,0){#1}}
+  \put(0,0){\proplabel{#6}{#7}}
+  \put(#1,0){\line(0,1){42}}
+}
+
+\newcommand{\roast}{%
+  \linethickness{1.5pt}
+  \put(0,0){\line(1,0){275}}
+  \put(0,0){\line(0,1){42}}
+  \put(275,0){\line(0,1){42}}
+  \put(0,42){\line(1,0){275}}
+
+  \put(0,0){\roastprops{35}{Date}{}{Batch \#}{}{Ambient Temp.}{}}
+
+  \put(35,0){\proplabel{Profile Description}{}}
+
+  \put(100,0){\roastprops{30}{150°C}{}{175°C}{}{200°C}{}}
+  \put(130,0){\roastprops{30}{210°C}{}{220°C}{}{230°C}{}}
+  \put(160,0){\roastprops{30}{1st Crack Start}{}{1st Crack End}{}{2nd Crack Start}{}}
+  \put(190,0){\roastprops{35}{Batch Size}{g}{Final Weight}{g}{Weight Loss}{\%}}
+
+  \put(225,0){
+    \linethickness{0.5pt}
+    \put(0,0){\line(0,1){42}}
+    \put(0,28){\proplabel{Total Roast Time}{}}
+    \put(0,28){\line(1,0){50}}
+    \put(0,0){\proplabel{Comments}{}}
+    \put(50,0){\line(0,1){42}}
+  }
+}
+
+\pagestyle{empty}
+
+\begin{document}
+  \begin{roastlog}
+    \put(0,132){\roast}
+    \put(0,88){\roast}
+    \put(0,44){\roast}
+    \put(0,0){\roast}
+  \end{roastlog}
+\end{document}
